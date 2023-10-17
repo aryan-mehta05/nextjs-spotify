@@ -2,20 +2,27 @@
 
 import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
 import { BiSearch } from "react-icons/bi";
 import { usePathname } from "next/navigation";
 
+// import usePlayer from "@/hooks/usePlayer";
+import { Song } from "@/types";
 import Box from "@/components/Box";
+// import Library from "@/components/Library";
 import SidebarItem from "@/components/SidebarItem";
 
 interface SidebarProps {
   children: React.ReactNode;
+  songs: Song[];
 };
 
 const Sidebar = ({
-  children
+  children,
+  songs
 }: SidebarProps) => {
   const pathname = usePathname();
+  // const player = usePlayer();
 
   const routes = useMemo(() => [
     {
@@ -46,9 +53,12 @@ const Sidebar = ({
           ))}
         </Box>
         <Box className="overflow-y-auto h-full">
-          Song Library
+          <Library songs={songs} />
         </Box>
       </div>
+      <main className="h-full flex-1 overflow-y-auto py-2">
+        {children}
+      </main>
     </div>
   );
 };
