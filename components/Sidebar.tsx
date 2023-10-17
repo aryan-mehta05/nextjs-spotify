@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 // import usePlayer from "@/hooks/usePlayer";
 import { Song } from "@/types";
 import Box from "@/components/Box";
-// import Library from "@/components/Library";
+import Library from "@/components/Library";
 import SidebarItem from "@/components/SidebarItem";
 
 interface SidebarProps {
