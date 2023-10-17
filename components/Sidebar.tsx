@@ -4,7 +4,9 @@ import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { usePathname } from "next/navigation";
-import Box from "./Box";
+
+import Box from "@/components/Box";
+import SidebarItem from "@/components/SidebarItem";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -35,8 +37,13 @@ const Sidebar = ({
       <div
         className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2"
       >
-        <Box>
-          Sidebar Navigation
+        <Box className="flex flex-col gap-y-4 px-5 py-4">
+          {routes.map((item) => (
+            <SidebarItem
+              key={item.label}
+              {...item}
+            />
+          ))}
         </Box>
         <Box className="overflow-y-auto h-full">
           Song Library
