@@ -14,7 +14,7 @@ const useLoadSongUrl = (song: Song) => {
     .from('songs')
     .getPublicUrl(song.song_path);
 
-  return songData.pulicUrl;
+  return songData.publicUrl;
 };
 
 export default useLoadSongUrl;
