@@ -62,6 +62,7 @@ const LikeButton = ({
         toast.error(error.message);
       } else {
         setIsLiked(false);
+        toast.success('Removed from Liked Songs!');
       }
     } else {
       const { error } = await supabaseClient
@@ -75,7 +76,7 @@ const LikeButton = ({
         toast.error(error.message);
       } else {
         setIsLiked(true);
-        toast.success('Success');
+        toast.success('Added to Liked Songs!');
       }
     }
 
