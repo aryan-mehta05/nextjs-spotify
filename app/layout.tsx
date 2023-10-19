@@ -6,6 +6,7 @@ import UserProvider from '@/providers/UserProvider';
 import ModalProvider from '@/providers/ModalProvider';
 import ToasterProvider from '@/providers/ToasterProvider';
 import SupabaseProvider from '@/providers/SupabaseProvider';
+import getSongsByUserId from '@/actions/getSongsByUserId';
 
 import './globals.css';
 
@@ -14,13 +15,17 @@ const font = Figtree({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Spotify || Aryan Mehta',
   description: 'Listen to your favourite music on this Nextjs13 Spotify clone!',
-}
+};
 
-export default function RootLayout({
+export const revalidate = 0;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const userSongs = await getSongsByUserId();
+
   return (
     <html lang="en">
       <body className={font.className}>
@@ -28,7 +33,7 @@ export default function RootLayout({
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
-            <Sidebar>
+            <Sidebar songs={userSongs}>
               {children}
             </Sidebar>
           </UserProvider>
