@@ -101,7 +101,7 @@ const SubscribeModal = ({
 
   if (subscription) {
     content = (
-      <div className="text-center">
+      <div className="text-center text-[#22c55e]">
         Already subscribed
       </div>
     );
